@@ -30,7 +30,7 @@ main_nav: true
   <div class="education-entry">
     <div class="education-header">
       <strong>University College London</strong>
-      <em>October 2023 -</em>
+      <em>October 2023 - October 2026</em>
     </div>
     <div>Department of Chemistry</div>
     <div>PhD in data-driven discovery of ferroelectric photovoltaics</div>
@@ -60,7 +60,15 @@ main_nav: true
     </div>
     <div class="degree-line">
       <span>BA in Natural Sciences</span>
-      <span>Class: I (74)</span>
+      <span>Class: I (74; 19th out of 101)</span>
     </div>
+  </div>
+  <div class="education-entry">
+    <div class="education-header">
+      <strong>Camden School for Girls</strong>
+      <em>September 2015 - August 2017</em>
+    </div>
+    <div>A*s in Maths, Further Maths, Chemistry, Physics</div>
+    <div>Highest in a year of ~300</div>
   </div>
 </div>
