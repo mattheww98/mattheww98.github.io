@@ -44,7 +44,7 @@ main_nav: true
     <div>Department of Chemistry</div>
     <div class="degree-line">
       <span>MSc Molecular and Materials Modelling: </span>
-      <span>Distinction (83)</span>
+      <span>Distinction (83; highest mark in computational cohort)</span>
     </div>
   </div>
   <br>
@@ -70,7 +70,7 @@ main_nav: true
       <em>September 2015 - August 2017</em>
     </div>
     <div>A*s in A-level Maths, Further Maths, Chemistry, Physics; As in AS-level History, French</div>
-    <div>Best results in a year of ~300</div>
+    <div>Highest grades in a year of ~300 students </div>
   </div>
 </div>
 <hr>
