@@ -23,7 +23,7 @@ main_nav: true
     </ul>
   </div>
 </div>
-
+<hr>
 <div class="section">
   <h2>Education</h2>
   
