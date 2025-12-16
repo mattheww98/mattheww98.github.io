@@ -92,7 +92,7 @@ main_nav: true
       <strong>General </strong>
     </div>
     <ul>
-      <li> Extensive experience using data analysis and ML (mainly PyTorch) packages in Python</li>
+      <li> Extensive experience using data analysis and ML packages (PyTorch & scikit-learn) in Python</li>
       <li> Languages: French & Italian (intermediate), Brazilian Portuguese (beginner)</li>
       <li> HPC & BASH in Linux environment</li>
       <li> Containerisation using Docker</li>
