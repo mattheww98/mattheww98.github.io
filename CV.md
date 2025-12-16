@@ -43,8 +43,8 @@ main_nav: true
     </div>
     <div>Department of Chemistry</div>
     <div class="degree-line">
-      <span>MSc Molecular and Materials Modelling</span>
-      <span>Class: Distinction (83)</span>
+      <span>MSc Molecular and Materials Modelling: </span>
+      <span>Distinction (83)</span>
     </div>
   </div>
   <br>
@@ -55,12 +55,12 @@ main_nav: true
     </div>
     <div>Department of Chemistry</div>
     <div class="degree-line">
-      <span>M.Sci. in Natural Sciences</span>
-      <span>Class: II.i (66)</span>
+      <span>M.Sci. in Natural Sciences: </span>
+      <span>II.i (66)</span>
     </div>
     <div class="degree-line">
-      <span>BA in Natural Sciences</span>
-      <span>Class: I (74; 19th out of 101)</span>
+      <span>BA in Natural Sciences: </span>
+      <span>I (74; 19th out of 101)</span>
     </div>
   </div>
   <br>
