@@ -73,3 +73,28 @@ main_nav: true
     <div>Best results in a year of ~300</div>
   </div>
 </div>
+<hr>
+<div class="section">
+  <h2>Skills</h2>
+  <div class="skill">
+    <div class="skill-header">
+      <strong>Technical skills </strong>
+    </div>
+    <ul>
+      <li>Performed data analytics in Excel & PowerBI</li>
+      <li>Wrote queries in SQL for APIs in SaaS product</li>
+      <li>Co-designed ETL pipeline based in Databricks</li>
+    </ul>
+  </div>
+  <div class="skill">
+    <div class="Languages">
+      <strong>Technical skills </strong>
+    </div>
+    <ul>
+      <li> French (intermediate)
+      <li> Italian (intermediate)
+      <li> Brazilian Portuguese (beginner)
+    </ul>
+  </div>
+</div>
+<hr>
