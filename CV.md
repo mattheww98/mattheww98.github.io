@@ -132,7 +132,7 @@ main_nav: true
       <strong>Supervisee projects </strong>
     </div>
     <ul>
-      <li>MSc project "Dimensionality-optimised learning of optical absorption spectra" (2026)</li>
+      <li>MSc project "Dimensionality-optimised Learning of Optical Absorption Spectra" (2026)</li>
       <li>MSc project "Searching for Black Swans in Materials Chemistry" (2025)</li>
       <li>MSc project "Optimisation of Similarity Learning for the Discovery of Candidate Photovoltaics" (2025)</li>
       <li>Undergraduate summer project "Correlating Fused Gromov-Wasserstein Distances to Photovoltaic Efficiency" (2025)</li>
