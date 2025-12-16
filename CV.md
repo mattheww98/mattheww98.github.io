@@ -106,13 +106,23 @@ main_nav: true
   <h2>Teaching</h2>
   <div class="teaching">
     <div class="teaching-header">
+      <strong>University teaching </strong>
+    </div>
+    <ul>
+      <li>2 years as Maths Fundamentals Lead for 1st year Engineering students</li>
+      <li>3 years as Demonstrator in various Computational Chemistry labs</li>
+      <li>2 years as Maths Tutorial Assistant for 2nd year Engineering students</li>
+    </ul>
+  </div>
+  <div class="teaching">
+    <div class="teaching-header">
       <strong>Supervisee projects </strong>
     </div>
     <ul>
+      <li>MSc project "Dimensionality-optimised learning of optical absorption spectra" (2026)</li>
       <li>MSc project "Searching for Black Swans in Materials Chemistry" (2025)</li>
-      <li>MSc project "Optimisation of Similarity Learning for the Discovery of Candidate Photovoltaics"</li>
-      <li>Undergraduate summer project "Correlating Fused Gromov-Wasserstein distances to photovoltaic efficiency"</li>
-      <li>MSc project "Dimensionality-optimised learning of optical absorption spectra"</li>
+      <li>MSc project "Optimisation of Similarity Learning for the Discovery of Candidate Photovoltaics" (2025)</li>
+      <li>Undergraduate summer project "Correlating Fused Gromov-Wasserstein distances to photovoltaic efficiency" (2025)</li>
     </ul>
   </div>
 </div>
