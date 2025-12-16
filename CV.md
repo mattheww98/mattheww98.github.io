@@ -89,15 +89,17 @@ main_nav: true
   </div>
   <div class="skill">
     <div class="skill-header">
-      <strong>General </strong>
+      <strong>Technical experience & skills </strong>
     </div>
     <ul>
       <li> Extensive experience using data analysis and ML packages (PyTorch & scikit-learn) in Python</li>
-      <li> Languages: French & Italian (intermediate), Brazilian Portuguese (beginner)</li>
       <li> HPC & BASH in Linux environment</li>
       <li> Containerisation using Docker</li>
       <li> Full MS Office suite</li>
+      <li> Creating dashboards using PowerBI as Business Analyst </li>
+      <li> Writing SQL queries for APIs as Business Analyst </li>
       <li> Certificates from DataCamp: Data Scientist, ML Engineer, ML Scientist (all in Python)</li>
+      <li> Languages: French & Italian (intermediate), Brazilian Portuguese (beginner)</li>
     </ul>
   </div>
 </div>
