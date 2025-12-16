@@ -20,16 +20,19 @@ if (!ORCID_ID) {
   fetch(`https://pub.orcid.org/v3.0/${ORCID_ID}/works`, {
     method: 'GET',
     headers: {
-      'Accept': 'application/vnd.orcid+json'
+      'Accept': 'application/json'  // ✅ This is the key fix
     }
   })
   .then(response => {
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}: ${response.statusText}`);
     }
+    // Optional: log content type for debugging
+    console.log('Content-Type:', response.headers.get('content-type'));
     return response.json();
   })
   .then(data => {
+    // Now data should be a proper JSON object with .group array
     if (!data?.group || !Array.isArray(data.group)) {
       container.innerHTML = '<p>No publication groups found.</p>';
       return;
@@ -39,28 +42,25 @@ if (!ORCID_ID) {
     let foundAny = false;
 
     data.group.forEach(group => {
-      // 🔒 Safely access group.works
-      if (!group?.works || !Array.isArray(group.works) || group.works.length === 0) {
-        return; // skip malformed group
+      // In v3.0 JSON, each group has a "work-summary" array (not "works")
+      if (!group?.['work-summary'] || !Array.isArray(group['work-summary']) || group['work-summary'].length === 0) {
+        return;
       }
 
-      const workSummary = group.works[0];
-      if (!workSummary?.work) {
-        return; // skip if no work object
-      }
+      const work = group['work-summary'][0]; // ✅ Correct field name in JSON
 
-      const work = workSummary.work;
       const title = work.title?.title?.value || 'Untitled';
-      const year = work.publication_date?.year?.value || 'n.d.';
-      const url = work.url?.value || '#';
+      const year = work['publication-date']?.year?.value || 'n.d.';
+      const url = work.url || '#';
       
-      const authors = work.contributors?.contributor
-        ? work.contributors.contributor
-            .map(c => c.contribution?.credit_name?.value || 'Unknown')
-            .join(', ')
-        : 'Unknown authors';
-      
-      const journal = work.journal_title?.value || '';
+      let authors = 'Unknown authors';
+      if (work.contributors?.contributor) {
+        authors = work.contributors.contributor
+          .map(c => c.contributor?.credit_name?.value || 'Unknown')
+          .join(', ');
+      }
+
+      const journal = work['journal-title'] || '';
 
       html += `
         <li style="margin-bottom: 1.5em; padding-bottom: 1em; border-bottom: 1px solid #eee;">
@@ -72,7 +72,7 @@ if (!ORCID_ID) {
     });
 
     if (!foundAny) {
-      container.innerHTML = '<p>No valid publications found in ORCID record.</p>';
+      container.innerHTML = '<p>No valid publications found.</p>';
     } else {
       html += '</ul>';
       container.innerHTML = html;
