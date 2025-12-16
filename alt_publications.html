@@ -5,12 +5,116 @@ category: page
 main_nav: true
 permalink: /alt_publications/
 ---
-
-<div itemscope itemtype="https://schema.org/Person">
-  <a itemprop="sameAs" content="https://orcid.org/YOUR-ORCID-ID" 
-     href="https://orcid.org/0000-0001-8746-8754" target="orcid.widget">
-    <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" 
-         style="width:1em;margin-right:.5em;" alt="ORCID iD icon">
-    https://orcid.org/YOUR-ORCID-ID
-  </a>
+<div id="publications-list">
+  <p>Loading publications from ORCID...</p>
 </div>
+<script>
+const ORCID_ID = "0000-0001-8746-8754";
+const container = document.getElementById('publications-list');
+
+if (!ORCID_ID) {
+  container.innerHTML = '<p>ORCID ID not configured</p>';
+} else {
+  fetch(`https://pub.orcid.org/v3.0/${ORCID_ID}/works`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    if (!data?.group || !Array.isArray(data.group)) {
+      container.innerHTML = '<p>No publications found.</p>';
+      return;
+    }
+    
+    container.innerHTML = '<p>Loading publication details...</p>';
+    
+    // Fetch detailed information for each work
+    const workPromises = data.group.map(group => {
+      if (!group?.['work-summary'] || group['work-summary'].length === 0) return null;
+      
+      const work = group['work-summary'][0];
+      const putCode = work['put-code'];
+      
+      // Fetch full work details
+      return fetch(`https://pub.orcid.org/v3.0/${ORCID_ID}/work/${putCode}`, {
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(r => r.json())
+      .catch(err => {
+        console.error(`Failed to fetch work ${putCode}:`, err);
+        return null;
+      });
+    }).filter(p => p !== null);
+    
+    return Promise.all(workPromises);
+  })
+  .then(works => {
+    if (!works || works.length === 0) {
+      container.innerHTML = '<p>No publications found.</p>';
+      return;
+    }
+    
+    let html = '<ul style="list-style: none; padding-left: 0;">';
+    
+    works.forEach(work => {
+      if (!work) return;
+      
+      // --- Title ---
+      const title = work.title?.title?.value || 'Untitled';
+      
+      // --- Year ---
+      const year = work['publication-date']?.year?.value || 'n.d.';
+      
+      // --- URL (prefer DOI) ---
+      let url = '#';
+      if (work['external-ids']?.['external-id']) {
+        const doi = work['external-ids']['external-id'].find(id =>
+          id['external-id-type'] === 'doi'
+        );
+        if (doi) {
+          url = `https://doi.org/${doi['external-id-value']}`;
+        }
+      }
+      if (url === '#') {
+        url = work.url?.value || '#';
+      }
+      
+      // --- Authors ---
+      let authors = 'Unknown authors';
+      if (work.contributors?.contributor && Array.isArray(work.contributors.contributor)) {
+        const authorNames = work.contributors.contributor
+          .map(c => c['credit-name']?.value)
+          .filter(name => name);
+        
+        if (authorNames.length > 0) {
+          authors = authorNames.join(', ');
+        }
+      }
+      
+      // --- Journal ---
+      const journal = work['journal-title']?.value || '';
+      
+      html += `
+        <li style="margin-bottom: 1.5em; padding-bottom: 1em; border-bottom: 1px solid #eee;">
+          <strong><a href="${url}" target="_blank" rel="noopener">${title}</a></strong> (${year})<br>
+          <em>${authors}</em>${journal ? `<br><small>${journal}</small></p>` : ''}
+        </li>
+      `;
+    });
+    
+    html += '</ul>';
+    container.innerHTML = html;
+  })
+  .catch(err => {
+    console.error('Publication loading error:', err);
+    container.innerHTML = `<p>Failed to load publications.</p><p><small>${err.message}</small></p>`;
+  });
+}
+</script>
