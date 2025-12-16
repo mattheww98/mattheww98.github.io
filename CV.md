@@ -68,7 +68,7 @@ main_nav: true
       <strong>Camden School for Girls</strong>
       <em>September 2015 - August 2017</em>
     </div>
-    <div>A*s in Maths, Further Maths, Chemistry, Physics, As in AS History, French</div>
+    <div>A*s in Maths, Further Maths, Chemistry, Physics; As in AS History, French</div>
     <div>Best results in a year of ~300</div>
   </div>
 </div>
