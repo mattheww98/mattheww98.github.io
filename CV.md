@@ -98,6 +98,7 @@ main_nav: true
       <li> Full MS Office suite</li>
       <li> Creating dashboards using PowerBI as Business Analyst </li>
       <li> Writing SQL queries for APIs as Business Analyst </li>
+      <li> Self publishing and collaboration on code using Git/hub </li>
       <li> Certificates from DataCamp: Data Scientist, ML Engineer, ML Scientist (all in Python)</li>
       <li> Languages: French & Italian (intermediate), Brazilian Portuguese (beginner)</li>
     </ul>
