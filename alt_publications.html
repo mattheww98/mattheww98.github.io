@@ -5,6 +5,7 @@ category: page
 main_nav: true
 permalink: /alt_publications/
 ---
+
 <div id="publications-list">
   <p>Loading publications from ORCID...</p>
 </div>
@@ -61,19 +62,18 @@ if (!ORCID_ID) {
       return;
     }
     
-    let html = '<ul style="list-style: none; padding-left: 0;">';
+    // Separate into published works and preprints
+    const published = [];
+    const preprints = [];
     
     works.forEach(work => {
       if (!work) return;
       
-      // --- Title ---
-      const title = work.title?.title?.value || 'Untitled';
-      
-      // --- Year ---
-      const year = work['publication-date']?.year?.value || 'n.d.';
-      
-      // --- URL (prefer DOI) ---
+      // Check if it's a preprint based on type or URL
+      const workType = work.type?.toLowerCase() || '';
       let url = '#';
+      
+      // Get URL
       if (work['external-ids']?.['external-id']) {
         const doi = work['external-ids']['external-id'].find(id =>
           id['external-id-type'] === 'doi'
@@ -81,10 +81,47 @@ if (!ORCID_ID) {
         if (doi) {
           url = `https://doi.org/${doi['external-id-value']}`;
         }
+        
+        // Also check for arXiv ID
+        const arxiv = work['external-ids']['external-id'].find(id =>
+          id['external-id-type']?.toLowerCase() === 'arxiv'
+        );
+        if (arxiv) {
+          url = `https://arxiv.org/abs/${arxiv['external-id-value']}`;
+        }
       }
       if (url === '#') {
         url = work.url?.value || '#';
       }
+      
+      // Determine if preprint based on type or URL
+      const isPreprint = workType === 'preprint' || 
+                        url.toLowerCase().includes('arxiv') ||
+                        url.toLowerCase().includes('biorxiv') ||
+                        url.toLowerCase().includes('medrxiv');
+      
+      const pubData = {
+        work: work,
+        url: url
+      };
+      
+      if (isPreprint) {
+        preprints.push(pubData);
+      } else {
+        published.push(pubData);
+      }
+    });
+    
+    // Function to format a publication entry
+    function formatPublication(pubData) {
+      const work = pubData.work;
+      const url = pubData.url;
+      
+      // --- Title ---
+      const title = work.title?.title?.value || 'Untitled';
+      
+      // --- Year ---
+      const year = work['publication-date']?.year?.value || 'n.d.';
       
       // --- Authors ---
       let authors = 'Unknown authors';
@@ -101,15 +138,39 @@ if (!ORCID_ID) {
       // --- Journal ---
       const journal = work['journal-title']?.value || '';
       
-      html += `
+      return `
         <li style="margin-bottom: 1.5em; padding-bottom: 1em; border-bottom: 1px solid #eee;">
           <strong><a href="${url}" target="_blank" rel="noopener">${title}</a></strong> (${year})<br>
-          <em>${authors}</em>${journal ? `<br><small>${journal}</small></p>` : ''}
+          <em>${authors}</em>${journal ? `<br><small>${journal}</small>` : ''}
         </li>
       `;
-    });
+    }
     
-    html += '</ul>';
+    // Build HTML
+    let html = '';
+    
+    if (published.length > 0) {
+      html += '<h2>Published Works</h2>';
+      html += '<ul style="list-style: none; padding-left: 0;">';
+      published.forEach(pub => {
+        html += formatPublication(pub);
+      });
+      html += '</ul>';
+    }
+    
+    if (preprints.length > 0) {
+      html += '<h2>Preprints</h2>';
+      html += '<ul style="list-style: none; padding-left: 0;">';
+      preprints.forEach(pub => {
+        html += formatPublication(pub);
+      });
+      html += '</ul>';
+    }
+    
+    if (published.length === 0 && preprints.length === 0) {
+      html = '<p>No publications found.</p>';
+    }
+    
     container.innerHTML = html;
   })
   .catch(err => {
