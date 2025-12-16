@@ -1,5 +1,65 @@
 ---
-layout: publications
+layout: page
 title: Publications
+category: page
+main_nav: true
 permalink: /publications/
 ---
+
+<div id="publications-list">
+  <p>Loading publications from ORCID...</p>
+</div>
+
+<script>
+const ORCID_ID = "0000-0001-8746-8754";
+if (!ORCID_ID) {
+  document.getElementById('publications-list').innerHTML = 
+    '<p>ORCID ID not configured in _config.yml</p>';
+} else {
+  fetch(`https://pub.orcid.org/v3.0/${ORCID_ID}/works`, {
+    headers: { 'Accept': 'application/json' }
+  })
+  .then(response => response.json())
+  .then(data => {
+    const container = document.getElementById('publications-list');
+    if (!data.group) {
+      container.innerHTML = '<p>No publications found.</p>';
+      return;
+    }
+    
+    let html = '<ul class="publications-list">';
+    data.group.forEach(group => {
+      const work = group.works[0].work;
+      const title = work.title?.title?.value || 'Untitled';
+      const year = work.publication_date?.year?.value || 'n.d.';
+      const url = work.url?.value || '#';
+      
+      let authors = 'Unknown authors';
+      if (work.contributors?.contributor) {
+        authors = work.contributors.contributor
+          .map(c => c.contribution?.credit_name?.value || 'Unknown')
+          .join(', ');
+      }
+      
+      let source = '';
+      if (work.journal_title?.value) {
+        source = work.journal_title.value;
+      }
+      
+      html += `
+        <li style="margin-bottom: 1.2em;">
+          <strong><a href="${url}" target="_blank">${title}</a></strong> (${year})<br>
+          <em>${authors}</em>${source ? `<br><small>${source}</small>` : ''}
+        </li>
+      `;
+    });
+    html += '</ul>';
+    container.innerHTML = html;
+  })
+  .catch(err => {
+    console.error('Failed to load publications:', err);
+    document.getElementById('publications-list').innerHTML = 
+      '<p>Failed to load publications. Please try again later.</p>';
+  });
+}
+</script>
