@@ -72,7 +72,8 @@ main_nav: true
     <div>A*s in A-level Maths, Further Maths, Chemistry, Physics; As in AS-level History, French</div>
     <div>Highest grades in a year of ~300 students </div>
   </div>
-   <div class="education-entry">
+  <br>
+  <div class="education-entry">
     <div class="education-header">
       <strong>William Ellis School</strong>
       <em>September 2010 - August 2015</em>
