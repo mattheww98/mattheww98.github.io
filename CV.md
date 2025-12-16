@@ -35,7 +35,7 @@ main_nav: true
     <div>Department of Chemistry</div>
     <div>PhD in data-driven discovery of ferroelectric photovoltaics</div>
   </div>
-  
+  <br>
   <div class="education-entry">
     <div class="education-header">
       <strong>University College London</strong>
@@ -47,7 +47,7 @@ main_nav: true
       <span>Class: Distinction (83)</span>
     </div>
   </div>
-  
+  <br>
   <div class="education-entry">
     <div class="education-header">
       <strong>University of Cambridge</strong>
@@ -63,6 +63,7 @@ main_nav: true
       <span>Class: I (74; 19th out of 101)</span>
     </div>
   </div>
+  <br>
   <div class="education-entry">
     <div class="education-header">
       <strong>Camden School for Girls</strong>
