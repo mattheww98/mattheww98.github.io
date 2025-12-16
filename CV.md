@@ -78,23 +78,41 @@ main_nav: true
   <h2>Skills</h2>
   <div class="skill">
     <div class="skill-header">
-      <strong>Technical skills </strong>
+      <strong>Computational chemistry tools </strong>
     </div>
     <ul>
-      <li>Performed data analytics in Excel & PowerBI</li>
-      <li>Wrote queries in SQL for APIs in SaaS product</li>
-      <li>Co-designed ETL pipeline based in Databricks</li>
+      <li>Solid-state DFT with VASP</li>
+      <li>High-throughput DFT with Atomate2</li>
+      <li>Python packages: ASE, Pymatgen</li>
+      <li>Interatomic potentials with GULP</li>
     </ul>
   </div>
   <div class="skill">
-    <div class="Languages">
-      <strong>Technical skills </strong>
+    <div class="skill-header">
+      <strong>General </strong>
     </div>
     <ul>
-      <li> French (intermediate)
-      <li> Italian (intermediate)
-      <li> Brazilian Portuguese (beginner)
+      <li> Extensive experience using data analysis and ML (mainly PyTorch) packages in Python</li>
+      <li> Languages: French & Italian (intermediate), Brazilian Portuguese (beginner)</li>
+      <li> HPC & BASH in Linux environment</li>
+      <li> Containerisation using Docker</li>
+      <li> Full MS Office suite</li>
+      <li> Certificates from DataCamp: Data Scientist, ML Engineer, ML Scientist (all in Python)</li>
     </ul>
   </div>
 </div>
 <hr>
+<div class="section">
+  <h2>Teaching</h2>
+  <div class="teaching">
+    <div class="teaching-header">
+      <strong>Supervisee projects </strong>
+    </div>
+    <ul>
+      <li>MSc project "Searching for Black Swans in Materials Chemistry" (2025)</li>
+      <li>MSc project "Optimisation of Similarity Learning for the Discovery of Candidate Photovoltaics"</li>
+      <li>Undergraduate summer project "Correlating Fused Gromov-Wasserstein distances to photovoltaic efficiency"</li>
+      <li>MSc project "Dimensionality-optimised learning of optical absorption spectra"</li>
+    </ul>
+  </div>
+</div>
