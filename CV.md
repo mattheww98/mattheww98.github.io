@@ -66,7 +66,7 @@ main_nav: true
   <br>
   <div class="education-entry">
     <div class="education-header">
-      <strong>Camden School for Girls</strong>
+      <strong>Camden School for Girls Sixth Form</strong>
       <em>September 2015 - August 2017</em>
     </div>
     <div>A*s in A-level Maths, Further Maths, Chemistry, Physics; As in AS-level History, French</div>
