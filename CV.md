@@ -125,6 +125,7 @@ main_nav: true
       <li>2 years as Maths Fundamentals Lead for 1st year Engineering students</li>
       <li>3 years as Demonstrator in various Computational Chemistry labs</li>
       <li>2 years as Maths Tutorial Assistant for 2nd year Engineering students</li>
+      <li>Training to be an Associate Fellow of the AdvanceHE (AFHEA)</li>
     </ul>
   </div>
   <div class="teaching">
