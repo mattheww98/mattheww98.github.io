@@ -93,7 +93,7 @@ main_nav: true
     <ul>
       <li>Solid-state DFT with VASP</li>
       <li>High-throughput DFT with Atomate2</li>
-      <li>Python packages: ASE, Pymatgen</li>
+      <li>MD simulations in LAMMPS & ASE</li>
       <li>Interatomic potentials with GULP</li>
     </ul>
   </div>
@@ -108,9 +108,9 @@ main_nav: true
       <li> Full MS Office suite</li>
       <li> Creating dashboards using PowerBI as Business Analyst </li>
       <li> Writing SQL queries for APIs as Business Analyst </li>
-      <li> Self publishing and collaboration on code using Git/hub </li>
+      <li> Self-publishing and collaboration on code using Git/hub </li>
       <li> Certificates from DataCamp: Data Scientist, ML Engineer, ML Scientist (all in Python)</li>
-      <li> Languages: French & Italian (intermediate), Brazilian Portuguese (beginner)</li>
+      <li> Languages: French & Italian (intermediate), Brazilian Portuguese & German (beginner)</li>
     </ul>
   </div>
 </div>
